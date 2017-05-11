@@ -6,11 +6,12 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var psi = require('psi');
 var minifyHtml = require('gulp-minify-html');
+var minifyCss = require('gulp-minify-css');
 
 gulp.task('default', function() {
 
-  gulp.watch('sass/**/*.scss', ['styles']);
-  gulp.watch('/index.html', ['minify-html']);
+  gulp.watch('sass/**/*.scss', ['styles', 'minify-css']);
+  gulp.watch('./index.html', ['minify-html']);
 
   browserSync.init({
 		server: {
@@ -60,7 +61,7 @@ gulp.task('styles', function() {
 		.pipe(autoprefixer({
 			browsers: ['last 2 versions']
 		}))
-		.pipe(gulp.dest('./dist/css'))
+		.pipe(gulp.dest('./css'))
 		.pipe(browserSync.stream());
 });
 
@@ -73,4 +74,10 @@ gulp.task('minify-html', function() {
     gulp.src('./index.html')
       .pipe(minifyHtml())
       .pipe(gulp.dest('./dist'))
+});
+
+gulp.task('minify-css', function() {
+    gulp.src('./css/*')
+      .pipe(minifyCss())
+      .pipe(gulp.dest('./dist/css'))
 });
