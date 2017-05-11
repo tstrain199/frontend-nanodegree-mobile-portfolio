@@ -1,0 +1,20 @@
+minimize html 27 mobile 30 desktop
+minimize css 74 mobile  89 desktop
+
+minimac:frontend-nanodegree-mobile-portfolio toddstrain$ du -sh dist/img/*
+ 64K	dist/img/2048.png
+264K	dist/img/cam_be_like.jpg
+188K	dist/img/mobilewebdev.jpg
+ 16K	dist/img/profilepic.jpg
+minimac:frontend-nanodegree-mobile-portfolio toddstrain$ gulp images
+[22:03:52] Using gulpfile ~/projects/frontend-nanodegree-mobile-portfolio/gulpfile.js
+[22:03:53] Starting 'images'...
+[22:03:53] Finished 'images' after 19 ms
+[22:03:55] gulp-imagemin: Minified 4 images (saved 74.5 kB - 13.8%)
+minimac:frontend-nanodegree-mobile-portfolio toddstrain$ du -sh dist/img/*
+ 40K	dist/img/2048.png
+244K	dist/img/cam_be_like.jpg
+172K	dist/img/mobilewebdev.jpg
+8.0K	dist/img/profilepic.jpg
+
+optimize images 74 mobile  90 desktop
