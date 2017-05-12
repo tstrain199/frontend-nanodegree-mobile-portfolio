@@ -52,7 +52,7 @@ header, footer, .container {
 
 header {
   padding: 0 0.5em;
-  color: #66FF33; }
+  color: #DAA520; }
 
 header img {
   border-radius: 40px;
@@ -96,10 +96,3 @@ footer {
 footer span {
   float: right;
   font-style: italic; }
-
-/* Smartphones (portrait) */
-@media only screen and (max-width: 480px) {
-  body {
-    font-size: 12px; }
-  header p {
-    padding-left: 4.5em; } }
