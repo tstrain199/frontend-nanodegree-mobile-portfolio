@@ -67,7 +67,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('minify-html', function() {
-    gulp.src('./index.html')
+    gulp.src('./*.html')
       .pipe(minifyHtml())
       .pipe(gulp.dest('./dist'))
 });
