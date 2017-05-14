@@ -16,6 +16,9 @@ Cameron Pittman, Udacity Course Developer
 cameron *at* udacity *dot* com
 */
 
+// Global variables
+var num_elements = 200;
+
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 var pizzaIngredients = {};
@@ -498,14 +501,13 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 
 // Moves the sliding background pizzas based on scroll position
-function updatePositions(scroll_pos_div) {
+function updatePositions(phase) {
   frame++;
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin(scroll_pos_div + (i %5))
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    items[i].style.left = items[i].basicLeft + 100 * phase[i] + 'px';
   }
 
 
@@ -521,9 +523,12 @@ function updatePositions(scroll_pos_div) {
 
 // runs updatePositions on scroll
 window.addEventListener('scroll', function(e) {
-  var scroll_pos_div = (document.body.scrollTop / 1250 );
+  var phase = new Array(num_elements);
+  for (var i = 0; i < num_elements; i++) {
+    phase[i] = Math.sin((document.body.scrollTop / 1250 ) + (i %5));
+  };
   window.requestAnimationFrame(function() {
-    updatePositions(scroll_pos_div)
+    updatePositions(phase)
   });
 });
 
@@ -531,7 +536,7 @@ window.addEventListener('scroll', function(e) {
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < num_elements; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
@@ -541,5 +546,5 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
-  updatePositions();
+  updatePositions(1);
 });
