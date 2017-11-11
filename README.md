@@ -1,5 +1,5 @@
 ## Website Performance Optimization portfolio project
-For more information about the Udacity course please see [Website Performance Optimization](https://classroom.udacity.com/courses/ud884)using Google PageSpeed
+For more information about the Udacity course that uses Goole PageSpeed, please see [Website Performance Optimization](https://classroom.udacity.com/courses/ud884)
 
 ### Quick start instructions
 1. Download or clone this repository
@@ -26,23 +26,23 @@ $> python -m SimpleHTTPServer 8080
 
 #### index.html
 1. Render blocking javascript moved near end of file.
-1. Images served localy instead of remotely.
+1. Images served locally instead of remotely.
 1. Media query added to some css.
 1. Render blocking css moved near end of file.
 
 #### views/main.js
-1. resizePizzas function optimized by not iterating over expensive calculations. Pizzas now resize in less than 5ms on most hardware.
-1. Eliminated jank when scrolling by using requestAnimationFrame. Page now renders under 60fps.
+1. *resizePizzas* function optimized by not iterating over expensive calculations. Pizzas now resize in less than 5ms on most hardware.
+1. Eliminated jank when scrolling by using *requestAnimationFrame*. Page now renders under 60fps.
 
 ### Build tools
- There are several tasks available in the gulpfile.js. If gulp is called with no arguments it defaults to the following tasks: minify-css, inlineCss, images, minifyjs, minify-html.
+ There are several tasks available in the *gulpfile.js*. If gulp is called with no arguments it defaults to the following tasks: minify-css, inlineCss, images, minifyjs, minify-html.
 
  ##### clean
-   Removes all artifacts (images, css, js, images) from their corresponding dist sub-directory.
+   Removes all artifacts (images, css, js, images) from their corresponding *dist* sub-directory.
 
 
  ##### minify-html
-   Minifys .html files found in build directory
+   Minifys .html files found in *build* directory
 
 
  ##### minify-css
@@ -54,7 +54,7 @@ $> python -m SimpleHTTPServer 8080
 
 
  ##### inlineCss
-   Automaticaly add css inline into html file for .html files in root directory. Artifacts placed in build directory for minification
+   Automaticaly add css inline into html file for .html files in *root* directory. Artifacts placed in *build* directory for minification
 
 
  ##### images
@@ -62,4 +62,4 @@ $> python -m SimpleHTTPServer 8080
 
 
  ##### clean
-   Removes all artifacts (images, css, js, images) from their corresponding dist sub-directory.
+   Removes all artifacts (images, css, js, images) from their corresponding *dist* sub-directory.
