@@ -40,20 +40,26 @@ $> python -m SimpleHTTPServer 8080
  ##### clean
    Removes all artifacts (images, css, js, images) from their corresponding dist sub-directory.
 
+
  ##### minify-html
    Minifys .html files found in build directory
+
 
  ##### minify-css
    Minifys .css files
 
+
  ##### minify-js
    Minifys .js files
+
 
  ##### inlineCss
    Automaticaly add css inline into html file for .html files in root directory. Artifacts placed in build directory for minification
 
+
  ##### images
    Optimizes image sizes
 
- - clean
+
+ ##### clean
    Removes all artifacts (images, css, js, images) from their corresponding dist sub-directory.
