@@ -5,6 +5,7 @@ var minifyCss = require('gulp-minify-css');
 var imagemin = require('gulp-imagemin');
 var jsmin = require('gulp-jsmin');
 var inlineCss = require('gulp-inline-css');
+var del = require('del');
 
 gulp.task('default', ['minify-css', 'inlineCss', 'images', 'minify-js', 'minify-html']);
 
@@ -49,4 +50,17 @@ gulp.task('inlineCss', function() {
     return gulp.src('./*.html')
         .pipe(inlineCss())
         .pipe(gulp.dest('build/'));
+});
+
+gulp.task('clean', function() {
+    return del([
+        'dist/css/*',
+	'dist/img/*',
+	'dist/*.html',
+	'dist/js/*',
+	'dist/views/*.html',
+	'dist/views/css/*',
+	'dist/views/js/*',
+	'dist/views/img/*'
+    ]);
 });
