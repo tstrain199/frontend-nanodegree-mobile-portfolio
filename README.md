@@ -7,14 +7,14 @@ For more information about the Udacity course please see [Website Performance Op
 1. Install dependancies
 
 ```bash
-$> npm Install
+$> npm install
 ```
-1. Optimize resources
+4. Optimize resources
 
 ```bash
 $> gulp
 ```
-1. Server app from HTTP server
+5. Serve app from HTTP server
 
 ```bash
 $> cd dist
@@ -32,27 +32,27 @@ $> python -m SimpleHTTPServer 8080
 
 #### views/main.js
 1. resizePizzas function optimized by not iterating over expensive calculations. Pizzas now resize in less than 5ms on most hardware.
-1. Eliminated jank when scrolling by using requestAnimationFrame. App now renders under 60fps.
+1. Eliminated jank when scrolling by using requestAnimationFrame. Page now renders under 60fps.
 
 ### Build tools
- There are several tasks available in the gulpfile.js. If gulp is called with no arguments it defaults to the following tasks: minify-css, inlineCss, iages, minifyjs, minify-html.
+ There are several tasks available in the gulpfile.js. If gulp is called with no arguments it defaults to the following tasks: minify-css, inlineCss, images, minifyjs, minify-html.
 
- - clean
+ ##### clean
    Removes all artifacts (images, css, js, images) from their corresponding dist sub-directory.
 
- - minify-html
+ ##### minify-html
    Minifys .html files found in build directory
 
- - minify-css
+ ##### minify-css
    Minifys .css files
 
- - minify-js
+ ##### minify-js
    Minifys .js files
 
- - inlineCss
+ ##### inlineCss
    Automaticaly add css inline into html file for .html files in root directory. Artifacts placed in build directory for minification
 
- - images
+ ##### images
    Optimizes image sizes
 
  - clean
