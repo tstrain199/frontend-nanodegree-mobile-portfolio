@@ -17,6 +17,7 @@ cameron *at* udacity *dot* com
 */
 
 // Global variables
+// Set number of pizza elements
 var num_elements = 200;
 
 // As you may have realized, this website randomly generates pizzas.
@@ -453,7 +454,7 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
-  // removed document.querySelectorAll for each iteration
+  // Removed determinDX call from each loop. We only need to do this once, not for each pizza element.
   function changePizzaSizes(size, newwidth) {
     for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
       document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
@@ -522,8 +523,8 @@ function updatePositions(phase) {
   }
 }
 
-// runs updatePositions on scroll
-// caclulate phase here
+// runs updatePositions on scroll using requestAnimationFrame for smoother repaints
+// calculate phase here outside of updatePositions which causes layout.
 window.addEventListener('scroll', function(e){
   var phase = new Array(num_elements);
   for (var i = 0; i < num_elements; i++) {
@@ -534,8 +535,7 @@ window.addEventListener('scroll', function(e){
   });
 });
 
-// Generates the sliding pizzas when the page loads.
-// dont use exact number of elements
+// Generates the sliding pizzas when the page loads
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
