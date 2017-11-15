@@ -18,7 +18,7 @@ cameron *at* udacity *dot* com
 
 // Global variables
 // Set number of pizza elements
-var num_elements = 200;
+var num_elements = (window.screen.height / 36);
 
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
@@ -508,7 +508,6 @@ function updatePositions(phase) {
 
   var items = document.querySelectorAll('.mover');
   for (var i = 0; i < items.length; i++) {
-    // document.body.scrollTop is no longer supported in Chrome.
     // do not calculate phase here, pass it in
     items[i].style.left = items[i].basicLeft + 100 * phase[i] + 'px';
   }
@@ -525,11 +524,13 @@ function updatePositions(phase) {
 
 // runs updatePositions on scroll using requestAnimationFrame for smoother repaints
 // calculate phase here outside of updatePositions which causes layout.
+// document.body.scrollTop is no longer supported in Chrome.
 window.addEventListener('scroll', function(e){
   var phase = new Array(num_elements);
   for (var i = 0; i < num_elements; i++) {
-    phase[i] = Math.sin((document.body.scrollTop / 1250 ) + (i %5));
+    phase[i] = Math.sin((document.documentElement.scrollTop || document.body.scrollTop / 1250 ) + (i %5));
   };
+  console.log('st:' + document.documentElement.scrollTop + ' h:' + window.screen.height);
   window.requestAnimationFrame(function() {
     updatePositions(phase)
   });
@@ -549,5 +550,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
-  updatePositions(1);
+  // Load page with pizzas in correct position by
+  // caclulating the phase of the first
+  updatePositions(phase);
 });
