@@ -17,7 +17,7 @@ cameron *at* udacity *dot* com
 */
 
 // Global variables
-// Set number of pizza elements
+// Set number of pizza elements dynamically
 var num_elements = (window.screen.height / 36);
 
 // As you may have realized, this website randomly generates pizzas.
@@ -456,8 +456,9 @@ var resizePizzas = function(size) {
   // Iterates through pizza elements on the page and changes their widths
   // Removed determinDX call from each loop. We only need to do this once, not for each pizza element.
   function changePizzaSizes(size, newwidth) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    var pc = document.querySelectorAll(".randomPizzaContainer")
+    for (var i = 0; i < pc.length; i++) {
+      pc[i].style.width = newwidth;
     }
   }
 
