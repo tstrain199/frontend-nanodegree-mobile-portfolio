@@ -17,8 +17,10 @@ cameron *at* udacity *dot* com
 */
 
 // Global variables
-// Set number of pizza elements dynamically
-var num_elements = (window.screen.height / 36);
+// Set number of pizza elements dynamically; make sure it divisible by 5
+//var prel = (window.screen.height / 36);
+var num_elements = Math.round(((window.screen.height / 36) / 5) * 5);
+console.log(num_elements);
 
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
@@ -503,14 +505,19 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
-function updatePositions(phase) {
+
+function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
+  var phase = [];
+  for (var p = 0; p < 6; p++) {
+    phase[p] = Math.sin((document.documentElement.scrollTop / 1250) + (p % 5));
+    //console.log(phase[p]);
+  }
+  var items = document.getElementsByClassName('mover');
   for (var i = 0; i < items.length; i++) {
-    // do not calculate phase here, pass it in
-    items[i].style.left = items[i].basicLeft + 100 * phase[i] + 'px';
+    items[i].style.left = items[i].basicLeft + 100 * phase[i % 5] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -524,16 +531,10 @@ function updatePositions(phase) {
 }
 
 // runs updatePositions on scroll using requestAnimationFrame for smoother repaints
-// calculate phase here outside of updatePositions which causes layout.
-// document.body.scrollTop is no longer supported in Chrome.
 window.addEventListener('scroll', function(e){
-  var phase = new Array(num_elements);
-  for (var i = 0; i < num_elements; i++) {
-    phase[i] = Math.sin((document.documentElement.scrollTop || document.body.scrollTop / 1250 ) + (i %5));
-  };
-  console.log('st:' + document.documentElement.scrollTop + ' h:' + window.screen.height);
+//  console.log('st:' + document.documentElement.scrollTop + ' h:' + window.screen.height);
   window.requestAnimationFrame(function() {
-    updatePositions(phase)
+    updatePositions()
   });
 });
 
@@ -551,7 +552,5 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
-  // Load page with pizzas in correct position by
-  // caclulating the phase of the first
-  updatePositions(phase);
+  updatePositions();
 });
