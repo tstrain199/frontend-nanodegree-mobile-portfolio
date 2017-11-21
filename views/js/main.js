@@ -18,8 +18,10 @@ cameron *at* udacity *dot* com
 
 // Global variables
 // Set number of pizza elements dynamically; make sure it is divisible by 5
-//var prel = (window.screen.height / 36);
-var num_elements = Math.round(((window.screen.height / 36) / 5) * 5);
+var cols = 8;
+var s = 256;
+var rows = window.screen.height / s;
+var num_elements = Math.round((rows * cols) / 5) * 5;
 
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
@@ -538,8 +540,6 @@ window.addEventListener('scroll', function(e){
 
 // Generates the sliding pizzas when the page loads
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = 8;
-  var s = 256;
   for (var i = 0; i < num_elements; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
