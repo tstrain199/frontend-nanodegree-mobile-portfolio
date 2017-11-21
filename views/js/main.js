@@ -17,10 +17,9 @@ cameron *at* udacity *dot* com
 */
 
 // Global variables
-// Set number of pizza elements dynamically; make sure it divisible by 5
+// Set number of pizza elements dynamically; make sure it is divisible by 5
 //var prel = (window.screen.height / 36);
 var num_elements = Math.round(((window.screen.height / 36) / 5) * 5);
-console.log(num_elements);
 
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
@@ -510,10 +509,10 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+// Because phase repeats for every 5 elements we can do calulation for the first 5 and reuse.
   var phase = [];
   for (var p = 0; p < 6; p++) {
     phase[p] = Math.sin((document.documentElement.scrollTop / 1250) + (p % 5));
-    //console.log(phase[p]);
   }
   var items = document.getElementsByClassName('mover');
   for (var i = 0; i < items.length; i++) {
@@ -532,7 +531,6 @@ function updatePositions() {
 
 // runs updatePositions on scroll using requestAnimationFrame for smoother repaints
 window.addEventListener('scroll', function(e){
-//  console.log('st:' + document.documentElement.scrollTop + ' h:' + window.screen.height);
   window.requestAnimationFrame(function() {
     updatePositions()
   });
