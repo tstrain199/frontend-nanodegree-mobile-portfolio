@@ -459,7 +459,7 @@ var resizePizzas = function(size) {
   // Iterates through pizza elements on the page and changes their widths
   // Removed determinDX call from each loop. We only need to do this once, not for each pizza element.
   function changePizzaSizes(size, newwidth) {
-    var pc = document.querySelectorAll(".randomPizzaContainer")
+    var pc = document.querySelectorAll(".randomPizzaContainer");
     for (var i = 0; i < pc.length; i++) {
       pc[i].style.width = newwidth;
     }
@@ -534,7 +534,7 @@ function updatePositions() {
 // runs updatePositions on scroll using requestAnimationFrame for smoother repaints
 window.addEventListener('scroll', function(e){
   window.requestAnimationFrame(function() {
-    updatePositions()
+    updatePositions();
   });
 });
 
